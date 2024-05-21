@@ -23,12 +23,11 @@ jobs:
 
             - name: Upload static files
               run:  aws s3 sync . 
-                    --region ap-northeast-2 s3://terraform-study-s3-bucket 
+                    --region ap-northeast-2 build s3://terraform-study-s3-bucket 
                     --exclude "*" 
                     --include "index.html"
                     --include "script.js"
                     --include "style.css"
-                    --debug
 
 
 
