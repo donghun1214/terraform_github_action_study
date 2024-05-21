@@ -15,6 +15,9 @@ jobs:
             contents: read
         
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
             - name: Configure AWS credentials
               uses: aws-actions/configure-aws-credentials@v4
               with:
@@ -25,7 +28,7 @@ jobs:
               run:  aws s3 sync static_files s3://terraform-study-s3-bucket 
                     --region ap-northeast-2 
                     
-                    
+
                     
 
 
