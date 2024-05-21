@@ -57,6 +57,7 @@ jobs:
                 ECR_REPOSITORY: skkudinginfra
               with:
                 file: docker/dockerfile
+                context: .
                 push: true
                 tags: ${{ steps.login-ecr.outputs.registry }}/skkudinginfra:latest
 
