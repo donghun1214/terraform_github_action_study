@@ -1,0 +1,33 @@
+name: cd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+    s3_sync:
+        name: AWS S3 Sync
+        runs-on: ubuntu-latest
+        permissions:
+            id-token: write
+            contents: read
+        
+        steps:
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                role-to-assume: arn:aws:iam::590184031400:oidc-provider/token.actions.githubusercontent.com
+                aws-region: ap-northeast-2
+
+            - name: Upload static files
+              run:  aws s3 sync . s3://terraform-study-s3-bucket 
+                    --exclude "*" 
+                    --include "index.html"
+                    --include "script.js"
+                    --include "style.css"
+
+
+
+
