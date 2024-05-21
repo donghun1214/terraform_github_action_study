@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "s3-bucket" {
 resource "aws_s3_object" "s3-object-html" {
   bucket = aws_s3_bucket.s3-bucket.id
   key    = "index.html"     #저장될 S3 경로 지정.
-  source = "./index.html"   #tf 파일 기준 로컬에 저장되어있는 파일 위치 
+  source = "static_files/index.html"   #tf 파일 기준 로컬에 저장되어있는 파일 위치 
   content_type    = "text/html"
   etag = filemd5("./index.html")  #로컬에 있는 객체와 S3에 있는 객체가 불일치할 때 업로드 수행함. 일치하면 수행하지 않음.
 }
@@ -18,7 +18,7 @@ resource "aws_s3_object" "s3-object-html" {
 resource "aws_s3_object" "s3-object-css" {
   bucket = aws_s3_bucket.s3-bucket.id
   key    = "style.css"     
-  source = "./style.css"   
+  source = "static_files/style.css"   
   content_type    = "text/css"
   etag = filemd5("./style.css")  
 }
@@ -27,7 +27,7 @@ resource "aws_s3_object" "s3-object-css" {
 resource "aws_s3_object" "s3-object" {
   bucket = aws_s3_bucket.s3-bucket.id
   key    = "script.js"    
-  source = "./script.js"   
+  source = "static_files/script.js"   
   content_type    = "application/javascript"
   etag = filemd5("./script.js") 
 }

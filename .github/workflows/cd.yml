@@ -22,7 +22,9 @@ jobs:
                 aws-region: ap-northeast-2
 
             - name: Upload static files
-              run:  aws s3 sync . s3://terraform-study-s3-bucket --region ap-northeast-2 
+              run:  aws s3 sync static_files s3://terraform-study-s3-bucket 
+                    --region ap-northeast-2 
+                    
 
 
 
