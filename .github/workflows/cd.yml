@@ -27,6 +27,7 @@ jobs:
                     --include "index.html"
                     --include "script.js"
                     --include "style.css"
+                    --debug
 
 
 
